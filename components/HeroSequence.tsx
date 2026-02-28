@@ -8,8 +8,9 @@ interface HeroSequenceProps {
 }
 
 export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) {
-    const [isFinished, setIsFinished] = useState(false);
-    const [isMuted, setIsMuted] = useState(true);
+    // We removed the session storage check so the roaring lion intro plays EVERY TIME
+    const alreadySeen = false;
+    const [phase, setPhase] = useState<"intro" | "video" | "done">("intro");
     const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
@@ -30,7 +31,7 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
     };
 
     const handleVideoEnd = () => {
-        setIsFinished(true);
+        setPhase("done");
         onSequenceComplete();
     };
 

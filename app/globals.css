@@ -4,15 +4,17 @@
   --font-sans:
     var(--font-inter), ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --color-primary: #93c5fd; /* Soft Blue/Silver accent instead of Gold */
-  --color-primary-foreground: #020617; /* Deep twilight blue/black */
-  --color-background: #020617; /* Very dark blue almost black */
-  --color-foreground: #f8fafc; /* Slate 50 */
+  --color-primary: #3b82f6;
+  /* Classic deep blue */
+  --color-primary-foreground: #020617;
+  --color-background: #0f1014;
+  /* Authentic Disney+ Hotstar dark background */
+  --color-foreground: #ffffff;
 }
 
 :root {
-  --background: #020617;
-  --foreground: #f8fafc;
+  --background: #0f1014;
+  --foreground: #ffffff;
 }
 
 body {
@@ -24,16 +26,49 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom utilities for the Disney theme */
+/* Custom utilities for the Hotstar theme */
 @layer utilities {
   .text-glow {
     text-shadow:
-      0 0 10px rgba(147, 197, 253, 0.5),
-      0 0 20px rgba(147, 197, 253, 0.3);
+      0 0 10px rgba(59, 130, 246, 0.4),
+      0 0 20px rgba(59, 130, 246, 0.2);
   }
+
   .glass-panel {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    /* very subtle border */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    /* Deep shadow */
   }
+}
+
+/* Custom Webkit Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* For elements where we explicitly want to hide scrollbars */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

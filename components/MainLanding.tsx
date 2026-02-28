@@ -7,6 +7,9 @@ import Link from "next/link";
 import { Play } from "lucide-react";
 
 import FloatingBirds from "./FloatingBirds";
+import FloatingFairies from "./FloatingFairies";
+import Footer from "./Footer";
+import FixedMickey from "./FixedMickey";
 
 // --- Advanced 3D Tilt Card Component ---
 // function TiltCard({ char, index }: { char: any, index: number }) {
@@ -103,9 +106,53 @@ const characters = [
     { name: "Disney Universe", src: "/disneo.webp", tag: "Magic", desc: "Where imagination knows no bounds. Discover worlds beyond your wildest dreams." },
 ];
 
+const tabsData = [
+    {
+        id: "marvel",
+        title: "Marvel",
+        badge: "Superheroes",
+        heading: "The Marvel Cinematic Universe",
+        description: "Assemble with Earth's mightiest heroes. Experience the epic saga of the Avengers from the very beginning."
+    },
+    {
+        id: "starwars",
+        title: "Star Wars",
+        badge: "Sci-Fi",
+        heading: "A Galaxy Far, Far Away",
+        description: "Join the resistance. Epic battles, legendary Jedi, and the ultimate ancient fight between light and dark."
+    },
+    {
+        id: "pixar",
+        title: "Pixar",
+        badge: "Animation",
+        heading: "Wonders of Pixar",
+        description: "Heartwarming tales that speak to all ages. Journey into the imagination where toys come alive and emotions have feelings."
+    }
+];
+
 export default function MainLanding() {
     const containerRef = useRef<HTMLDivElement>(null);
     const bgVideoRef = useRef<HTMLVideoElement>(null);
+
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end end"]
+    });
+
+    const [hasInteracted, setHasInteracted] = useState(false);
+    const [activeTab, setActiveTab] = useState(tabsData[0].id);
+
+    useEffect(() => {
+        const handleInteraction = () => setHasInteracted(true);
+        window.addEventListener("click", handleInteraction);
+        window.addEventListener("scroll", handleInteraction);
+        window.addEventListener("touchstart", handleInteraction);
+        return () => {
+            window.removeEventListener("click", handleInteraction);
+            window.removeEventListener("scroll", handleInteraction);
+            window.removeEventListener("touchstart", handleInteraction);
+        };
+    }, []);
 
     // Parallax Effects
     const yHeroText = useTransform(scrollYProgress, [0, 0.3], ["0%", "120%"]);
@@ -119,6 +166,9 @@ export default function MainLanding() {
 
     return (
         <div ref={containerRef} className="relative bg-[#050505] overflow-hidden selection:bg-primary/30 selection:text-white">
+
+            {/* Fixed Magical/Disney Elements */}
+            <FixedMickey />
 
             {/* ── SECTION 1: IMMERSIVE HERO PARALLAX ── */}
             <motion.section
@@ -164,36 +214,12 @@ export default function MainLanding() {
                     )}
                 </AnimatePresence>
 
-                {/* Mute / Unmute toggle */}
-                <motion.button
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.2, duration: 0.8 }}
-                    onClick={toggleMute}
-                    className="absolute bottom-8 right-8 z-30 flex items-center gap-2 px-4 py-2 rounded-full bg-black/30 backdrop-blur-md border border-white/10 text-white/50 hover:text-white/80 hover:border-white/25 transition-all duration-300 cursor-pointer"
-                >
-                    {isMuted ? (
-                        <>
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-                                    d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-                            </svg>
-                            <span className="text-[11px] tracking-[0.25em] uppercase font-light">Sound Off</span>
-                        </>
-                    ) : (
-                        <>
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-                                    d="M15.536 8.464a5 5 0 010 7.072M12 6v12m-3.536-9.536a5 5 0 000 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                            </svg>
-                            <span className="text-[11px] tracking-[0.25em] uppercase font-light">Sound On</span>
-                        </>
-                    )}
-                </motion.button>
+                {/* Magical Angels/Fairies flying */}
+                <FloatingFairies />
 
-                {/* Floating particles */}
-                <div className="absolute inset-0 pointer-events-none">
-                    {[...Array(16)].map((_, i) => (
+                {/* Floating ambient HTML particles */}
+                <div className="absolute inset-0 pointer-events-none z-10">
+                    {[...Array(25)].map((_, i) => (
                         <motion.div
                             key={i}
                             className="absolute rounded-full bg-primary"
@@ -225,29 +251,19 @@ export default function MainLanding() {
                             <motion.div animate={{ width: [10, 40, 10] }} transition={{ duration: 4, repeat: Infinity }} className="h-[2px] bg-primary/40" />
                         </div>
 
-                    <motion.h1
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1.4, delay: 0.4, ease: "easeOut" }}
-                        className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-sans tracking-tight leading-tight mb-5"
-                        style={{ textShadow: "0 0 60px rgba(147,197,253,0.15)" }}
-                    >
-                        Home to Disney, Pixar,
-                        <br />
-                        <span className="text-transparent bg-clip-text"
-                            style={{ backgroundImage: "linear-gradient(135deg, #93c5fd 0%, #e2e8f0 100%)" }}>
-                            Marvel, Star Wars & More
-                        </span>
-                    </motion.h1>
+                        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white tracking-tighter leading-[0.9] mb-8"
+                            style={{ textShadow: "0 0 80px rgba(147,197,253,0.2)" }}>
+                            The Magic of
+                            <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#93c5fd] via-white to-[#3b82f6]">
+                                Disney
+                            </span>
+                        </h1>
 
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1.2, delay: 0.9 }}
-                        className="text-sm md:text-base text-white/45 font-sans font-light max-w-xl leading-relaxed mb-10"
-                    >
-                        For over 100 years, The Walt Disney Company has been the world&apos;s leading entertainment brand — producing beloved films, pioneering theme parks on 6 continents, and streaming to 200 million households worldwide.
-                    </motion.p>
+                        <p className="text-lg md:text-2xl text-white/50 font-light max-w-2xl mx-auto leading-relaxed mb-16">
+                            Stream the greatest stories spanning from Disney, Pixar, Marvel, Star Wars, and National Geographic.
+                        </p>
+                    </motion.div>
 
                     <motion.div
                         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5, duration: 1.5 }}
@@ -307,13 +323,104 @@ export default function MainLanding() {
                             <div className="absolute inset-0 rounded-3xl border border-white/0 group-hover:border-primary/30 transition-all duration-500" />
                         </motion.div>
                     ))}
-                </div> */}
+                </div>
             </section>
 
             {/* ── SECTION 3: INTERACTIVE STORYTELLING & GAMIFIED EXPLORATION ── */}
-            <section className="relative z-20 py-32 px-6 md:px-12 bg-linear-to-b from-[#050505] to-[#020202] overflow-hidden">
-                {/* Magical glow behind characters */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.05),transparent_60%)]" />
+            <section className="relative z-20 py-32 px-6 md:px-12 bg-[#020202] overflow-hidden">
+                {/* Magical ambient lighting behind section */}
+                <div className="absolute top-0 right-1/4 w-[1000px] h-[1000px] bg-purple-900/20 blur-[150px] rounded-full pointer-events-none mix-blend-screen" />
+                <div className="absolute bottom-0 left-1/4 w-[1000px] h-[1000px] bg-blue-900/15 blur-[150px] rounded-full pointer-events-none mix-blend-screen" />
+
+                <div className="max-w-7xl mx-auto text-center mb-16 relative z-10">
+                    <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, ease: "easeOut" }}>
+                        <h2 className="text-5xl md:text-7xl font-light text-white mb-6 tracking-tight drop-shadow-2xl">
+                            Interactive <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-300 to-indigo-300 font-bold">Storytelling</span>
+                        </h2>
+                        <p className="text-xl md:text-2xl text-white/50 max-w-3xl mx-auto font-light leading-relaxed">
+                            A journey designed for Families, Kids, Teens, and Nostalgia-driven adults. Dive into interactive tales where every choice reveals a new secret.
+                        </p>
+                    </motion.div>
+                </div>
+
+                <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto relative z-10">
+
+                    {/* Gamified Card - Large Image Style */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="flex-1 min-h-[500px] rounded-[2.5rem] relative overflow-hidden group cursor-pointer border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                    >
+                        {/* Background Image */}
+                        <img
+                            src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1500&auto=format&fit=crop"
+                            className="absolute inset-0 w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-[1.5s] ease-out brightness-75 group-hover:brightness-100"
+                            alt="Magical landscape"
+                        />
+
+                        {/* Glassmorphic internal framing */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#020202] via-black/40 to-transparent transition-opacity duration-700" />
+
+                        {/* Content */}
+                        <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                            <motion.div initial={{ y: 20, opacity: 0.9 }} whileHover={{ y: 0, opacity: 1 }} transition={{ duration: 0.4 }}>
+                                <div className="mb-4 inline-flex px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
+                                    <span className="text-xs text-white uppercase tracking-widest font-semibold">Gamification</span>
+                                </div>
+                                <h3 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight" style={{ textShadow: "0 4px 20px rgba(0,0,0,0.8)" }}>
+                                    Magical Exploration
+                                </h3>
+                                <p className="text-white/80 text-lg leading-relaxed font-light mb-8 max-w-md">
+                                    Navigate through magical worlds and uncover hidden artifacts. Designed with high accessibility for children to easily discover legendary tales.
+                                </p>
+                                <div className="flex items-center gap-3 text-purple-300 font-bold tracking-widest text-sm uppercase group-hover:text-pink-300 transition-colors">
+                                    <span>Begin Journey</span>
+                                    <div className="h-0.5 w-8 bg-purple-300 group-hover:w-16 transition-all duration-700" />
+                                </div>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+
+                    {/* Character Card - Large Image Style */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                        className="flex-1 min-h-[500px] rounded-[2.5rem] relative overflow-hidden group cursor-pointer border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                    >
+                        {/* Background Image */}
+                        <img
+                            src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?q=80&w=1500&auto=format&fit=crop"
+                            className="absolute inset-0 w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-[1.5s] ease-out brightness-75 group-hover:brightness-100"
+                            alt="Character navigation"
+                        />
+
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#020202] via-black/40 to-transparent transition-opacity duration-700" />
+
+                        {/* Content */}
+                        <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                            <motion.div initial={{ y: 20, opacity: 0.9 }} whileHover={{ y: 0, opacity: 1 }} transition={{ duration: 0.4 }}>
+                                <div className="mb-4 inline-flex px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
+                                    <span className="text-xs text-white uppercase tracking-widest font-semibold">Companions</span>
+                                </div>
+                                <h3 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight" style={{ textShadow: "0 4px 20px rgba(0,0,0,0.8)" }}>
+                                    Character Navigation
+                                </h3>
+                                <p className="text-white/80 text-lg leading-relaxed font-light mb-8 max-w-md">
+                                    Let legendary heroes guide your content discovery. Say goodbye to heavy menus, and hello to intuitive, emotional companion-driven interfaces.
+                                </p>
+                                <div className="flex items-center gap-3 text-indigo-300 font-bold tracking-widest text-sm uppercase group-hover:text-blue-300 transition-colors">
+                                    <span>Meet The Cast</span>
+                                    <div className="h-0.5 w-8 bg-indigo-300 group-hover:w-16 transition-all duration-700" />
+                                </div>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
 
             {/* ── SECTION 4: INTERACTIVE TABS ── */}
             <section className="relative z-10 py-24 md:py-32 px-6 md:px-12">
@@ -466,6 +573,8 @@ export default function MainLanding() {
                     </div>
                 </motion.div>
             </section>
+
+            <Footer />
         </div>
     );
 }

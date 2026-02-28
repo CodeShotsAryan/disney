@@ -28,7 +28,7 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
 
     const handleVideoEnd = () => {
         setPhase("done");
-        onSequenceComplete(); // Immediate — no pause
+        onSequenceComplete();
     };
 
     return (
@@ -40,7 +40,27 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.7, ease: "easeInOut" }}
                 >
-                    {/* ── PHASE 1: Cinematic Black Intro ── *
+                    {/* ── PHASE 1: Cinematic Black Intro ── */}
+                    <AnimatePresence>
+                        {phase === "intro" && (
+                            <motion.div
+                                key="intro-screen"
+                                className="absolute inset-0 flex flex-col items-center justify-center bg-black cursor-pointer select-none"
+                                initial={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.7 }}
+                                onClick={startVideo}
+                            >
+                                {/* Background: lion king image very dark */}
+                                <div className="absolute inset-0 overflow-hidden">
+                                    <Image
+                                        src="/lionking.jpg"
+                                        alt="Lion King"
+                                        fill
+                                        className="object-cover opacity-20 scale-110"
+                                        priority
+                                    />
+                                    <div className="absolute inset-0 bg-black/70" />
                                     <div className="absolute inset-0"
                                         style={{ background: "radial-gradient(ellipse 60% 50% at 50% 60%, transparent 0%, rgba(0,0,0,0.9) 80%)" }}
                                     />
@@ -48,7 +68,6 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
 
                                 {/* Content */}
                                 <div className="relative z-10 flex flex-col items-center text-center px-6">
-                                    {/* Disney logo text */}
                                     <motion.p
                                         initial={{ opacity: 0, y: -10 }}
                                         animate={{ opacity: 1, y: 0 }}
@@ -58,7 +77,6 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                                         Walt Disney Pictures
                                     </motion.p>
 
-                                    {/* DISNEY wordmark */}
                                     <motion.h1
                                         initial={{ opacity: 0, scale: 0.92 }}
                                         animate={{ opacity: 1, scale: 1 }}
@@ -69,7 +87,6 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                                         DISNEY
                                     </motion.h1>
 
-                                    {/* Tagline */}
                                     <motion.p
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
@@ -79,7 +96,6 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                                         Where every story begins
                                     </motion.p>
 
-                                    {/* Divider line */}
                                     <motion.div
                                         initial={{ scaleX: 0 }}
                                         animate={{ scaleX: 1 }}
@@ -87,7 +103,7 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                                         className="w-32 h-px bg-white/20 my-10 origin-center"
                                     />
 
-                                    {/* CTA — big and visible */}
+                                    {/* CTA */}
                                     <motion.div
                                         initial={{ opacity: 0, y: 16 }}
                                         animate={{ opacity: 1, y: 0 }}
@@ -99,7 +115,6 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                                             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                                             className="w-16 h-16 rounded-full border-2 border-white/40 flex items-center justify-center"
                                         >
-                                            {/* Play triangle */}
                                             <div className="w-0 h-0 ml-1"
                                                 style={{
                                                     borderTop: "10px solid transparent",
@@ -141,11 +156,9 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                                 transition={{ duration: 10, ease: "easeOut" }}
                             />
 
-                            {/* Overlays */}
                             <div className="absolute inset-0 bg-linear-to-b from-black/60 via-transparent to-black/85 z-10 pointer-events-none" />
                             <div className="absolute top-0 inset-x-0 h-40 bg-linear-to-b from-black to-transparent z-10 pointer-events-none" />
 
-                            {/* Text at bottom */}
                             <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-20 pointer-events-none">
                                 <motion.p
                                     initial={{ opacity: 0, y: 10 }}

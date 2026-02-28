@@ -156,7 +156,14 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                                 transition={{ duration: 10, ease: "easeOut" }}
                             />
 
-                            <div className="absolute inset-0 bg-linear-to-b from-black/60 via-transparent to-black/85 z-10 pointer-events-none" />
+                            {/* Solid dark base overlay — kills the brightness */}
+                            <div className="absolute inset-0 bg-black/55 z-10 pointer-events-none" />
+                            {/* Bluish tint overlay */}
+                            <div className="absolute inset-0 z-10 pointer-events-none"
+                                style={{ background: "rgba(10, 15, 40, 0.25)" }}
+                            />
+                            {/* Top + bottom gradient bars */}
+                            <div className="absolute inset-0 bg-linear-to-b from-black/80 via-transparent to-black/90 z-10 pointer-events-none" />
                             <div className="absolute top-0 inset-x-0 h-40 bg-linear-to-b from-black to-transparent z-10 pointer-events-none" />
 
                             <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-20 pointer-events-none">

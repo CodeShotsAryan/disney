@@ -65,9 +65,9 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                                         className="object-cover opacity-20 scale-110"
                                         priority
                                     />
-                                    <div className="absolute inset-0 bg-black/70" />
+                                    <div className="absolute inset-0 bg-black/40" />
                                     <div className="absolute inset-0"
-                                        style={{ background: "radial-gradient(ellipse 60% 50% at 50% 60%, transparent 0%, rgba(0,0,0,0.9) 80%)" }}
+                                        style={{ background: "radial-gradient(ellipse 60% 50% at 50% 60%, transparent 0%, rgba(0,0,0,0.6) 80%)" }}
                                     />
                                 </div>
 
@@ -148,13 +148,13 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                             />
 
                             {/* Solid dark base overlay */}
-                            <div className="absolute inset-0 bg-black/35 z-10 pointer-events-none" />
+                            <div className="absolute inset-0 bg-black/10 z-10 pointer-events-none" />
                             {/* Bluish tint overlay */}
                             <div className="absolute inset-0 z-10 pointer-events-none"
-                                style={{ background: "rgba(10, 15, 40, 0.2)" }}
+                                style={{ background: "rgba(10, 15, 40, 0.1)" }}
                             />
                             {/* Top + bottom gradient bars */}
-                            <div className="absolute inset-0 bg-linear-to-b from-black/65 via-transparent to-black/75 z-10 pointer-events-none" />
+                            <div className="absolute inset-0 bg-linear-to-b from-black/30 via-transparent to-black/40 z-10 pointer-events-none" />
                             <div className="absolute top-0 inset-x-0 h-40 bg-linear-to-b from-black to-transparent z-10 pointer-events-none" />
 
                             <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-20 pointer-events-none">

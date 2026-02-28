@@ -7,6 +7,9 @@ import Link from "next/link";
 import { Play } from "lucide-react";
 
 import FloatingBirds from "./FloatingBirds";
+import FloatingFairies from "./FloatingFairies";
+import Footer from "./Footer";
+import FixedMickey from "./FixedMickey";
 
 // --- Advanced 3D Tilt Card Component ---
 // function TiltCard({ char, index }: { char: any, index: number }) {
@@ -120,6 +123,9 @@ export default function MainLanding() {
     return (
         <div ref={containerRef} className="relative bg-[#050505] overflow-hidden selection:bg-primary/30 selection:text-white">
 
+            {/* Fixed Magical/Disney Elements */}
+            <FixedMickey />
+
             {/* ── SECTION 1: IMMERSIVE HERO PARALLAX ── */}
             <motion.section
                 className="relative w-full h-[120vh] flex flex-col items-center justify-start pt-[30vh] overflow-hidden"
@@ -145,6 +151,9 @@ export default function MainLanding() {
 
                 {/* White Small Birds Flying Over the site */}
                 <FloatingBirds />
+
+                {/* Magical Angels/Fairies flying */}
+                <FloatingFairies />
 
                 {/* Floating ambient HTML particles */}
                 <div className="absolute inset-0 pointer-events-none z-10">
@@ -182,15 +191,15 @@ export default function MainLanding() {
 
                         <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white tracking-tighter leading-[0.9] mb-8"
                             style={{ textShadow: "0 0 80px rgba(147,197,253,0.2)" }}>
-                            Infinite
+                            The Magic of
                             <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#93c5fd] via-white to-[#3b82f6]">
-                                Imagination
+                                Disney
                             </span>
                         </h1>
 
                         <p className="text-lg md:text-2xl text-white/50 font-light max-w-2xl mx-auto leading-relaxed mb-16">
-                            Step into a century of storytelling. Explore immersive worlds, legendary characters, and the magic that connects us all.
+                            Stream the greatest stories spanning from Disney, Pixar, Marvel, Star Wars, and National Geographic.
                         </p>
                     </motion.div>
 
@@ -229,59 +238,96 @@ export default function MainLanding() {
             </section>
 
             {/* ── SECTION 3: INTERACTIVE STORYTELLING & GAMIFIED EXPLORATION ── */}
-            <section className="relative z-20 py-32 px-6 md:px-12 bg-linear-to-b from-[#050505] to-[#020202] overflow-hidden">
-                {/* Magical glow behind characters */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.05),transparent_60%)]" />
+            <section className="relative z-20 py-32 px-6 md:px-12 bg-[#020202] overflow-hidden">
+                {/* Magical ambient lighting behind section */}
+                <div className="absolute top-0 right-1/4 w-[1000px] h-[1000px] bg-purple-900/20 blur-[150px] rounded-full pointer-events-none mix-blend-screen" />
+                <div className="absolute bottom-0 left-1/4 w-[1000px] h-[1000px] bg-blue-900/15 blur-[150px] rounded-full pointer-events-none mix-blend-screen" />
 
                 <div className="max-w-7xl mx-auto text-center mb-16 relative z-10">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-6 tracking-tight" style={{ textShadow: "0 0 60px rgba(255,255,255,0.3)" }}>
-                            Interactive <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-indigo-400 font-bold">Storytelling</span>
+                    <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, ease: "easeOut" }}>
+                        <h2 className="text-5xl md:text-7xl font-light text-white mb-6 tracking-tight drop-shadow-2xl">
+                            Interactive <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-300 to-indigo-300 font-bold">Storytelling</span>
                         </h2>
                         <p className="text-xl md:text-2xl text-white/50 max-w-3xl mx-auto font-light leading-relaxed">
-                            A journey designed for Families, Kids, Teens, and Nostalgia-driven adults.
-                            Dive into interactive tales where every choice reveals a new secret.
+                            A journey designed for Families, Kids, Teens, and Nostalgia-driven adults. Dive into interactive tales where every choice reveals a new secret.
                         </p>
                     </motion.div>
                 </div>
 
-                <div className="flex flex-col md:flex-row gap-8 max-w-7xl mx-auto relative z-10 items-stretch">
-                    {/* Gamified Card */}
+                <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto relative z-10">
+
+                    {/* Gamified Card - Large Image Style */}
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         whileHover={{ scale: 1.02 }}
-                        transition={{ duration: 0.8 }}
-                        className="flex-1 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-2xl rounded-[2rem] p-10 border border-white/20 relative shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] cursor-pointer group"
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="flex-1 min-h-[500px] rounded-[2.5rem] relative overflow-hidden group cursor-pointer border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
                     >
-                        <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                        <h3 className="text-3xl font-bold text-white mb-4 tracking-tight drop-shadow-sm">Gamified Exploration</h3>
-                        <p className="text-white/60 text-lg leading-relaxed font-light mb-8">
-                            Navigate through magical worlds and uncover hidden artifacts.
-                            Designed with high accessibility for children to seamlessly discover their favorite classic tales and legendary heroes.
-                        </p>
-                        <div className="flex items-center gap-2 text-blue-400 font-semibold tracking-wider text-sm uppercase group-hover:text-blue-300 transition-colors">
-                            <span>Begin Adventure</span>
-                            <div className="h-px w-6 bg-blue-400 group-hover:w-16 transition-all duration-700" />
+                        {/* Background Image */}
+                        <img
+                            src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1500&auto=format&fit=crop"
+                            className="absolute inset-0 w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-[1.5s] ease-out brightness-75 group-hover:brightness-100"
+                            alt="Magical landscape"
+                        />
+
+                        {/* Glassmorphic internal framing */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#020202] via-black/40 to-transparent transition-opacity duration-700" />
+
+                        {/* Content */}
+                        <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                            <motion.div initial={{ y: 20, opacity: 0.9 }} whileHover={{ y: 0, opacity: 1 }} transition={{ duration: 0.4 }}>
+                                <div className="mb-4 inline-flex px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
+                                    <span className="text-xs text-white uppercase tracking-widest font-semibold">Gamification</span>
+                                </div>
+                                <h3 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight" style={{ textShadow: "0 4px 20px rgba(0,0,0,0.8)" }}>
+                                    Magical Exploration
+                                </h3>
+                                <p className="text-white/80 text-lg leading-relaxed font-light mb-8 max-w-md">
+                                    Navigate through magical worlds and uncover hidden artifacts. Designed with high accessibility for children to easily discover legendary tales.
+                                </p>
+                                <div className="flex items-center gap-3 text-purple-300 font-bold tracking-widest text-sm uppercase group-hover:text-pink-300 transition-colors">
+                                    <span>Begin Journey</span>
+                                    <div className="h-0.5 w-8 bg-purple-300 group-hover:w-16 transition-all duration-700" />
+                                </div>
+                            </motion.div>
                         </div>
                     </motion.div>
 
-                    {/* Character Card */}
+                    {/* Character Card - Large Image Style */}
                     <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         whileHover={{ scale: 1.02 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="flex-1 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-2xl rounded-[2rem] p-10 border border-white/20 relative shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] cursor-pointer group"
+                        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                        className="flex-1 min-h-[500px] rounded-[2.5rem] relative overflow-hidden group cursor-pointer border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
                     >
-                        <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-bl from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                        <h3 className="text-3xl font-bold text-white mb-4 tracking-tight drop-shadow-sm">Character-Led Navigation</h3>
-                        <p className="text-white/60 text-lg leading-relaxed font-light mb-8">
-                            Let legendary heroes guide your content discovery. Say goodbye to heavy menus, and hello to intuitive, emotional companion-driven interfaces.
-                        </p>
-                        <div className="flex items-center gap-2 text-indigo-400 font-semibold tracking-wider text-sm uppercase group-hover:text-indigo-300 transition-colors">
-                            <span>Meet The Cast</span>
-                            <div className="h-px w-6 bg-indigo-400 group-hover:w-16 transition-all duration-700" />
+                        {/* Background Image */}
+                        <img
+                            src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?q=80&w=1500&auto=format&fit=crop"
+                            className="absolute inset-0 w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-[1.5s] ease-out brightness-75 group-hover:brightness-100"
+                            alt="Character navigation"
+                        />
+
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#020202] via-black/40 to-transparent transition-opacity duration-700" />
+
+                        {/* Content */}
+                        <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                            <motion.div initial={{ y: 20, opacity: 0.9 }} whileHover={{ y: 0, opacity: 1 }} transition={{ duration: 0.4 }}>
+                                <div className="mb-4 inline-flex px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
+                                    <span className="text-xs text-white uppercase tracking-widest font-semibold">Companions</span>
+                                </div>
+                                <h3 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight" style={{ textShadow: "0 4px 20px rgba(0,0,0,0.8)" }}>
+                                    Character Navigation
+                                </h3>
+                                <p className="text-white/80 text-lg leading-relaxed font-light mb-8 max-w-md">
+                                    Let legendary heroes guide your content discovery. Say goodbye to heavy menus, and hello to intuitive, emotional companion-driven interfaces.
+                                </p>
+                                <div className="flex items-center gap-3 text-indigo-300 font-bold tracking-widest text-sm uppercase group-hover:text-blue-300 transition-colors">
+                                    <span>Meet The Cast</span>
+                                    <div className="h-0.5 w-8 bg-indigo-300 group-hover:w-16 transition-all duration-700" />
+                                </div>
+                            </motion.div>
                         </div>
                     </motion.div>
                 </div>
@@ -361,6 +407,8 @@ export default function MainLanding() {
                     </div>
                 </motion.div>
             </section>
+
+            <Footer />
         </div>
     );
 }

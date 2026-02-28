@@ -21,7 +21,7 @@ const marvelUniverse = [
     {
         id: "m1",
         title: "Deadpool & Wolverine",
-        image: "https://images.unsplash.com/photo-1549405615-abaab264df22?q=80&w=1500&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=1500&auto=format&fit=crop",
         genres: ["Action", "Comedy"],
         year: "2024",
         duration: "2h 7m",
@@ -38,7 +38,7 @@ const marvelUniverse = [
     {
         id: "m3",
         title: "Thor: Ragnarok",
-        image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1500&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1478479405421-ce83c92fb3ba?q=80&w=1500&auto=format&fit=crop",
         genres: ["Action", "Comedy"],
         year: "2017",
         duration: "2h 10m",
@@ -62,7 +62,7 @@ const marvelUniverse = [
     {
         id: "m6",
         title: "Avengers: Endgame",
-        image: "https://images.unsplash.com/photo-1561149877-84d2572ca1ae?q=80&w=1500&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=1500&auto=format&fit=crop",
         genres: ["Action", "Sci-Fi"],
         year: "2019",
         duration: "3h 1m",
@@ -70,7 +70,7 @@ const marvelUniverse = [
     {
         id: "m7",
         title: "Black Panther",
-        image: "https://images.unsplash.com/photo-1542361345-89e58247f2d5?q=80&w=1500&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1508215885820-4585e5610ec0?q=80&w=1500&auto=format&fit=crop",
         genres: ["Action", "Adventure"],
         year: "2018",
         duration: "2h 14m",
@@ -78,7 +78,7 @@ const marvelUniverse = [
     {
         id: "m8",
         title: "Doctor Strange",
-        image: "https://images.unsplash.com/photo-1588726880-9b3de8755609?q=80&w=1500&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1514539079130-25950c84af65?q=80&w=1500&auto=format&fit=crop",
         genres: ["Action", "Fantasy"],
         year: "2016",
         duration: "1h 55m",

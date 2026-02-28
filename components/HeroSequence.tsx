@@ -187,6 +187,20 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                                 )}
                             </motion.button>
 
+                            {/* Skip Intro toggle — small, top-right corner */}
+                            <motion.button
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.5, duration: 0.8 }}
+                                onClick={handleVideoEnd}
+                                className="absolute top-8 right-8 z-30 flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-white/70 hover:text-white hover:border-white/30 transition-all duration-200 cursor-pointer"
+                            >
+                                <span className="text-xs tracking-widest uppercase font-sans font-light">Skip Intro</span>
+                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                                </svg>
+                            </motion.button>
+
                             <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-20 pointer-events-none">
                                 <motion.p
                                     initial={{ opacity: 0, y: 10 }}

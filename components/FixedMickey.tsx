@@ -12,22 +12,22 @@ export default function FixedMickey() {
             animate={{ y: 0 }}
             transition={{ type: "spring", bounce: 0.5, duration: 2, delay: 1 }}
         >
-            <Link href="/kids" className="relative flex flex-col items-center cursor-pointer group">
-                {/* Magical string holding Mickey */}
-                <div className="w-[2px] h-32 md:h-48 bg-gradient-to-b from-white/10 to-white/90" />
+            <Link href="/child" className="relative flex flex-col items-center cursor-pointer group pointer-events-auto">
+                {/* Clean string holding it */}
+                <div className="w-[1px] h-32 md:h-48 bg-white/40" />
 
-                {/* Glowing Proper Mickey Mouse Image */}
+                {/* Full character image with a subtle hover effect */}
                 <motion.div
-                    className="w-24 h-32 md:w-32 md:h-40 relative origin-top z-10 -mt-2"
-                    animate={{ rotate: [-6, 6, -6] }}
-                    transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                    whileHover={{ scale: 1.1, rotate: 0 }}
+                    className="w-32 h-40 md:w-36 md:h-48 relative origin-top z-10 -mt-2 shadow-[0_10px_40px_rgba(0,0,0,0.8)] rounded-xl overflow-hidden border-2 border-white/20"
+                    animate={{ rotate: [-4, 4, -4] }}
+                    transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
+                    whileHover={{ scale: 1.05, rotate: 0 }}
                 >
                     <Image
-                        src="/mickey.webp"
+                        src="/mickymouse.jpg"
                         alt="Kids Mode"
                         fill
-                        className="object-contain drop-shadow-[0_0_25px_rgba(255,255,255,0.8)] filter brightness-110"
+                        className="object-cover"
                     />
                 </motion.div>
             </Link>

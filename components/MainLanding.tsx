@@ -64,10 +64,10 @@ export default function MainLanding() {
                         src="/disneo.webp"
                         alt="Disney Universe"
                         fill
-                        className="object-cover opacity-15 scale-105"
+                        className="object-cover opacity-35 scale-105"
                         priority
                     />
-                    <div className="absolute inset-0 bg-linear-to-b from-background via-background/60 to-background" />
+                    <div className="absolute inset-0 bg-linear-to-b from-background/80 via-background/30 to-background" />
                 </div>
 
                 {/* Floating particles */}

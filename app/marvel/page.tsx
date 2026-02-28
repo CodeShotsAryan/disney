@@ -15,18 +15,7 @@ export default function MarvelPage() {
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay" />
             </div>
 
-            {/* Navbar Back Button */}
-            <div className="fixed top-6 left-6 md:top-10 md:left-12 z-50">
-                <Link href="/">
-                    <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex items-center gap-2 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-white/80 hover:text-white hover:border-white/30 transition-all font-medium text-sm shadow-xl"
-                    >
-                        <ChevronLeft className="w-5 h-5" /> Back to Universe
-                    </motion.div>
-                </Link>
-            </div>
+
 
             {/* Hero Section */}
             <section className="relative w-full h-[85vh] flex flex-col items-center justify-end pb-20 md:pb-32 px-6 z-10">

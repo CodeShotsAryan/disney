@@ -13,18 +13,7 @@ export default function StarWarsPage() {
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05] mix-blend-overlay" />
             </div>
 
-            {/* Navbar Back Button */}
-            <div className="fixed top-6 left-6 md:top-10 md:left-12 z-50">
-                <Link href="/">
-                    <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex items-center gap-2 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-white/80 hover:text-white transition-all font-medium text-sm shadow-[0_0_15px_rgba(255,255,255,0.05)]"
-                    >
-                        <ChevronLeft className="w-5 h-5" /> Back to Universe
-                    </motion.div>
-                </Link>
-            </div>
+
 
             {/* Hero Section */}
             <section className="relative w-full h-screen flex flex-col items-center justify-center -mt-10 px-6 z-10">

@@ -134,7 +134,7 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                     {phase === "video" && (
                         <motion.div
                             key="video-screen"
-                            className="absolute inset-0"
+                            className="fixed inset-0 z-[100] cursor-default pointer-events-auto"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.8 }}
@@ -160,13 +160,16 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                             <div className="absolute inset-0 bg-linear-to-b from-black/30 via-transparent to-black/40 z-10 pointer-events-none" />
                             <div className="absolute top-0 inset-x-0 h-40 bg-linear-to-b from-black to-transparent z-10 pointer-events-none" />
 
-                            {/* Mute toggle — small, bottom-right corner */}
+                            {/* Mute/Unmute toggle */}
                             <motion.button
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ delay: 1, duration: 0.8 }}
-                                onClick={toggleMute}
-                                className="absolute bottom-8 right-8 z-30 flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-white/70 hover:text-white hover:border-white/30 transition-all duration-200 cursor-pointer"
+                                transition={{ delay: 0.5, duration: 0.8 }}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    toggleMute(e);
+                                }}
+                                className="absolute bottom-8 right-8 z-[100] flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-white/70 hover:text-white hover:border-white/30 transition-all duration-200 cursor-pointer pointer-events-auto"
                             >
                                 {isMuted ? (
                                     <>
@@ -192,8 +195,11 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.5, duration: 0.8 }}
-                                onClick={handleVideoEnd}
-                                className="absolute top-8 right-8 z-30 flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-white/70 hover:text-white hover:border-white/30 transition-all duration-200 cursor-pointer"
+                                onClick={(e) => {
+                                    e.stopPropagation(); // Stop click from propagating
+                                    handleVideoEnd();
+                                }}
+                                className="absolute top-28 right-8 z-[100] flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-white/70 hover:text-white hover:border-white/30 transition-all duration-200 cursor-pointer pointer-events-auto"
                             >
                                 <span className="text-xs tracking-widest uppercase font-sans font-light">Skip Intro</span>
                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

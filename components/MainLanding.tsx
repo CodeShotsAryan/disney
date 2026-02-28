@@ -59,15 +59,21 @@ export default function MainLanding() {
                 style={{ opacity: opacityHero }}
             >
                 {/* Background: disneo image as atmosphere */}
-                <div className="absolute inset-0">
-                    <Image
-                        src="/disneo.webp"
-                        alt="Disney Universe"
-                        fill
-                        className="object-cover opacity-35 scale-105"
-                        priority
+                <div className="absolute inset-0 overflow-hidden">
+                    <video
+                        src="/Castel_animation_fireworks_night_delpmaspu_.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover opacity-40 scale-105"
                     />
-                    <div className="absolute inset-0 bg-linear-to-b from-background/80 via-background/30 to-background" />
+                    {/* Dark overlay so text stays readable */}
+                    <div className="absolute inset-0 bg-linear-to-b from-background/75 via-background/25 to-background" />
+                    {/* Extra vignette on sides */}
+                    <div className="absolute inset-0"
+                        style={{ background: "radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, rgba(var(--background-raw,0,5,20),0.7) 100%)" }}
+                    />
                 </div>
 
                 {/* Floating particles */}

@@ -9,9 +9,9 @@ interface HeroSequenceProps {
 }
 
 export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) {
-    // Skip intro entirely if already seen this session
-    const alreadySeen = typeof window !== "undefined" && sessionStorage.getItem("disney_intro_seen") === "1";
-    const [phase, setPhase] = useState<"intro" | "video" | "done">(alreadySeen ? "done" : "intro");
+    // We removed the session storage check so the roaring lion intro plays EVERY TIME
+    const alreadySeen = false;
+    const [phase, setPhase] = useState<"intro" | "video" | "done">("intro");
     const videoRef = useRef<HTMLVideoElement>(null);
 
     // If already seen, skip straight to main content
@@ -32,7 +32,6 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
     };
 
     const handleVideoEnd = () => {
-        sessionStorage.setItem("disney_intro_seen", "1"); // Mark as seen
         setPhase("done");
         onSequenceComplete();
     };

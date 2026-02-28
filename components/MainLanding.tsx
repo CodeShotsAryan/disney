@@ -172,7 +172,7 @@ export default function MainLanding() {
 
             {/* ── SECTION 1: IMMERSIVE HERO PARALLAX ── */}
             <motion.section
-                className="relative w-full h-[120vh] flex flex-col items-center justify-start pt-[30vh] overflow-hidden"
+                className="relative w-full h-[100vh] flex flex-col items-center justify-start pt-[25vh] overflow-hidden"
                 style={{ opacity: opacityHero }}
             >
                 {/* Background Video — NO muted prop here, controlled via ref */}
@@ -180,16 +180,17 @@ export default function MainLanding() {
                     <video
                         ref={bgVideoRef}
                         src="/Castel.mp4"
+                        autoPlay
+                        muted
                         loop
                         playsInline
                         preload="auto"
-                        className="absolute inset-0 w-full h-full object-cover opacity-45 scale-105"
+                        className="absolute inset-0 w-full h-full object-cover opacity-[0.85] scale-105"
                         style={{ pointerEvents: "none" }}
                     />
-                    {/* Top fade */}
-                    <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.08) 40%, rgba(0,0,0,0.88) 100%)" }} />
-                    {/* Side vignette */}
-                    <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 90% 80% at 50% 50%, transparent 35%, rgba(0,0,10,0.62) 100%)" }} />
+                    {/* Top + bottom fade to blend smoothly into the black background */}
+                    <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#050505] to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent" />
                 </div>
 
                 {/* "Click anywhere for sound" pill — disappears after interaction */}
@@ -216,6 +217,9 @@ export default function MainLanding() {
 
                 {/* Magical Angels/Fairies flying */}
                 <FloatingFairies />
+
+                {/* Magical Birds flying */}
+                <FloatingBirds />
 
                 {/* Floating ambient HTML particles */}
                 <div className="absolute inset-0 pointer-events-none z-10">
@@ -260,9 +264,9 @@ export default function MainLanding() {
                             </span>
                         </h1>
 
-                        <p className="text-lg md:text-2xl text-white/50 font-light max-w-2xl mx-auto leading-relaxed mb-16">
-                            Stream the greatest stories spanning from Disney, Pixar, Marvel, Star Wars, and National Geographic.
-                        </p>
+                        {/* <p className="text-lg md:text-2xl text-white font-light max-w-2xl mx-auto leading-relaxed mb-16">
+                            Stream the greatest stories  from Disney, Pixar, Marvel, Star Wars, and National Geographic.
+                        </p> */}
                     </motion.div>
 
                     <motion.div
@@ -468,7 +472,7 @@ export default function MainLanding() {
                     </div>
                     <div className="flex-1 relative min-h-[360px] rounded-3xl overflow-hidden border border-white/5 bg-white/[0.02]">
                         <div className="absolute inset-0">
-                            <Image src="/mickey.webp" alt="Disney Character" fill className="object-cover opacity-5" />
+                            <Image src="/mickeymouse.jpg" alt="Disney Character" fill className="object-cover opacity-5" />
                             <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%)" }} />
                         </div>
                         <AnimatePresence mode="wait">
@@ -489,14 +493,16 @@ export default function MainLanding() {
                                                 <p className="text-base md:text-lg text-white/55 font-sans font-light leading-relaxed max-w-xl">{tab.description}</p>
                                             </div>
                                             <div className="mt-10">
-                                                <motion.button
-                                                    whileHover={{ x: 4 }}
-                                                    whileTap={{ scale: 0.97 }}
-                                                    className="flex items-center gap-3 text-white font-sans font-medium tracking-wider uppercase text-sm group"
-                                                >
-                                                    <span>Explore {tab.title}</span>
-                                                    <div className="w-8 h-px bg-white/40 group-hover:w-14 transition-all duration-300" />
-                                                </motion.button>
+                                                <Link href={`/${tab.id}`}>
+                                                    <motion.button
+                                                        whileHover={{ x: 4 }}
+                                                        whileTap={{ scale: 0.97 }}
+                                                        className="flex items-center gap-3 text-white font-sans font-medium tracking-wider uppercase text-sm group"
+                                                    >
+                                                        <span>Explore {tab.title}</span>
+                                                        <div className="w-8 h-px bg-white/40 group-hover:w-14 transition-all duration-300" />
+                                                    </motion.button>
+                                                </Link>
                                             </div>
                                         </motion.div>
                                     )

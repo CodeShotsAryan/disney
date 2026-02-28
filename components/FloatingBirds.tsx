@@ -21,7 +21,7 @@ export default function FloatingBirds() {
 
     // Create an array of birds with different configurations
     const birds = Array.from({ length: 8 }).map((_, i) => {
-        const size = Math.random() * 0.6 + 0.4; // 0.4 to 1
+        const size = Math.random() * 1.5 + 1.2; // 1.2 to 2.7 (Significantly larger)
         const duration = Math.random() * 15 + 15; // 15s to 30s
         const top = Math.random() * 40 + 5; // 5% to 45% (sky of the website)
         const delay = Math.random() * 20; // Stagger start times

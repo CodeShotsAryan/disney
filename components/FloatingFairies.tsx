@@ -35,8 +35,8 @@ export default function FloatingFairies() {
 
     if (!mounted) return null;
 
-    // Create an array of magical flying fairies
-    const fairies = Array.from({ length: 5 }).map((_, i) => {
+    // Create exactly two of the purple magical flying fairies
+    const fairies = Array.from({ length: 2 }).map((_, i) => {
         const size = Math.random() * 0.5 + 0.5; // Scale
         const durationX = Math.random() * 20 + 20; // Flight speed across screen
         const startY = Math.random() * 80 + 10; // Start height (10% to 90%)

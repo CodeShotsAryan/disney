@@ -1,0 +1,3 @@
+remove the play button broo at start enter the magic and all
+
+direclyt start with the flow the vidoe and start scale little bit, and please rmeove those yellow colors and side icone of the symboosl look ing very badd,  please make it lok blakisch only dinsye theme porperly blackish bluish very little and add content pages other of what disney does as per that offical website and what has been told to us create the tabs if told to us, and whatever to us and tell me what have you buidld and what told to us, and what to do please build crazyy and remove those errors man 

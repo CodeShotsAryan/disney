@@ -4,9 +4,11 @@
   --font-sans:
     var(--font-inter), ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --color-primary: #3b82f6; /* Classic deep blue */
-  --color-primary-foreground: #020617; 
-  --color-background: #0f1014; /* Authentic Disney+ Hotstar dark background */
+  --color-primary: #3b82f6;
+  /* Classic deep blue */
+  --color-primary-foreground: #020617;
+  --color-background: #0f1014;
+  /* Authentic Disney+ Hotstar dark background */
   --color-foreground: #ffffff;
 }
 
@@ -31,11 +33,14 @@ body {
       0 0 10px rgba(59, 130, 246, 0.4),
       0 0 20px rgba(59, 130, 246, 0.2);
   }
+
   .glass-panel {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.05); /* very subtle border */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Deep shadow */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* very subtle border */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    /* Deep shadow */
   }
 }
 

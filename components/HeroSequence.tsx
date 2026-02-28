@@ -9,24 +9,30 @@ interface HeroSequenceProps {
 }
 
 export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) {
-    const [phase, setPhase] = useState<"intro" | "video" | "done">("intro");
+    // Skip intro entirely if already seen this session
+    const alreadySeen = typeof window !== "undefined" && sessionStorage.getItem("disney_intro_seen") === "1";
+    const [phase, setPhase] = useState<"intro" | "video" | "done">(alreadySeen ? "done" : "intro");
     const videoRef = useRef<HTMLVideoElement>(null);
+
+    // If already seen, skip straight to main content
+    if (alreadySeen && phase === "done") {
+        onSequenceComplete();
+        return null;
+    }
 
     const startVideo = () => {
         setPhase("video");
         setTimeout(() => {
             const v = videoRef.current;
             if (v) {
-                v.muted = false;
-                v.play().catch(() => {
-                    v.muted = true;
-                    v.play().catch(() => { });
-                });
+                v.muted = false; // User clicked = browser allows audio, no fallback
+                v.play();
             }
         }, 150);
     };
 
     const handleVideoEnd = () => {
+        sessionStorage.setItem("disney_intro_seen", "1"); // Mark as seen
         setPhase("done");
         onSequenceComplete();
     };
@@ -72,7 +78,7 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                                         initial={{ opacity: 0, y: -10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.3, duration: 1 }}
-                                        className="text-xs md:text-sm tracking-[0.6em] text-white/40 uppercase font-sans font-light mb-6"
+                                        className="text-xs md:text-sm tracking-[0.3em] text-white/40 uppercase font-sans font-light mb-6"
                                     >
                                         Walt Disney Pictures
                                     </motion.p>
@@ -81,7 +87,7 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                                         initial={{ opacity: 0, scale: 0.92 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         transition={{ delay: 0.6, duration: 1.8, ease: "easeOut" }}
-                                        className="text-7xl md:text-[10rem] font-bold text-white font-sans tracking-tighter leading-none"
+                                        className="text-6xl md:text-[8rem] font-bold text-white font-sans tracking-tighter leading-none"
                                         style={{ textShadow: "0 0 120px rgba(147,197,253,0.35), 0 0 40px rgba(147,197,253,0.2)" }}
                                     >
                                         DISNEY
@@ -110,23 +116,9 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                                         transition={{ delay: 2.2, duration: 1 }}
                                         className="flex flex-col items-center gap-4"
                                     >
-                                        <motion.div
-                                            animate={{ scale: [1, 1.08, 1] }}
-                                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                                            className="w-16 h-16 rounded-full border-2 border-white/40 flex items-center justify-center"
-                                        >
-                                            <div className="w-0 h-0 ml-1"
-                                                style={{
-                                                    borderTop: "10px solid transparent",
-                                                    borderBottom: "10px solid transparent",
-                                                    borderLeft: "18px solid rgba(255,255,255,0.8)"
-                                                }}
-                                            />
-                                        </motion.div>
+
                                         <motion.p
-                                            animate={{ opacity: [0.4, 1, 0.4] }}
-                                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                                            className="text-sm tracking-[0.4em] text-white/60 uppercase font-sans font-light"
+                                            className="text-sm  text-white uppercase font-sans font-light"
                                         >
                                             Click anywhere to begin
                                         </motion.p>
@@ -156,14 +148,14 @@ export default function HeroSequence({ onSequenceComplete }: HeroSequenceProps) 
                                 transition={{ duration: 10, ease: "easeOut" }}
                             />
 
-                            {/* Solid dark base overlay — kills the brightness */}
-                            <div className="absolute inset-0 bg-black/55 z-10 pointer-events-none" />
+                            {/* Solid dark base overlay */}
+                            <div className="absolute inset-0 bg-black/35 z-10 pointer-events-none" />
                             {/* Bluish tint overlay */}
                             <div className="absolute inset-0 z-10 pointer-events-none"
-                                style={{ background: "rgba(10, 15, 40, 0.25)" }}
+                                style={{ background: "rgba(10, 15, 40, 0.2)" }}
                             />
                             {/* Top + bottom gradient bars */}
-                            <div className="absolute inset-0 bg-linear-to-b from-black/80 via-transparent to-black/90 z-10 pointer-events-none" />
+                            <div className="absolute inset-0 bg-linear-to-b from-black/65 via-transparent to-black/75 z-10 pointer-events-none" />
                             <div className="absolute top-0 inset-x-0 h-40 bg-linear-to-b from-black to-transparent z-10 pointer-events-none" />
 
                             <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-20 pointer-events-none">

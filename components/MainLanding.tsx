@@ -123,11 +123,23 @@ export default function MainLanding() {
                 className="relative w-full h-[120vh] flex flex-col items-center justify-start pt-[30vh] overflow-hidden"
                 style={{ opacity: opacityHero }}
             >
-                <motion.div className="absolute inset-0" style={{ scale: scaleHeroImage }}>
-                    <Image src="/disneo.webp" alt="Disney Universe" fill className="object-cover opacity-35" priority />
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/40 via-[#050505]/70 to-[#050505]" />
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_0%,#050505_80%)]" />
-                </motion.div>
+                {/* Background: disneo image as atmosphere */}
+                <div className="absolute inset-0 overflow-hidden">
+                    <video
+                        src="/Castel_animation_fireworks_night_delpmaspu_.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover opacity-40 scale-105"
+                    />
+                    {/* Dark overlay so text stays readable */}
+                    <div className="absolute inset-0 bg-linear-to-b from-background/75 via-background/25 to-background" />
+                    {/* Extra vignette on sides */}
+                    <div className="absolute inset-0"
+                        style={{ background: "radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, rgba(var(--background-raw,0,5,20),0.7) 100%)" }}
+                    />
+                </div>
 
                 {/* Floating ambient particles */}
                 <div className="absolute inset-0 pointer-events-none z-10">

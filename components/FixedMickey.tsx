@@ -18,16 +18,16 @@ export default function FixedMickey() {
 
                 {/* Full character image with a subtle hover effect */}
                 <motion.div
-                    className="w-32 h-40 md:w-36 md:h-48 relative origin-top z-10 -mt-2 shadow-[0_10px_40px_rgba(0,0,0,0.8)] rounded-xl overflow-hidden border-2 border-white/20"
+                    className="w-16 h-20 md:w-36 md:h-48 relative origin-top z-10 -mt-2 rounded-xl overflow-hidden"
                     animate={{ rotate: [-4, 4, -4] }}
                     transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
                     whileHover={{ scale: 1.05, rotate: 0 }}
                 >
                     <Image
-                        src="/mickymouse.jpg"
-                        alt="Kids Mode"
+                        src="/spider.png"
+                        alt="Spider-Man"
                         fill
-                        className="object-cover"
+                        className="object-contain"
                     />
                 </motion.div>
             </Link>

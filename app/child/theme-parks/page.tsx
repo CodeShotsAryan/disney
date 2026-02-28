@@ -14,17 +14,7 @@ export default function ThemeParksPage() {
                 <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-blue-900/10 blur-[150px] rounded-full mix-blend-screen" />
             </div>
 
-            {/* Back to Parks */}
-            <div className="px-6 md:px-12 mb-8 relative z-10 block">
-                <Link href="/child">
-                    <motion.div
-                        whileHover={{ x: -5 }}
-                        className="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors uppercase text-xs tracking-widest"
-                    >
-                        <ChevronLeft className="w-4 h-4" /> Back to Destinations
-                    </motion.div>
-                </Link>
-            </div>
+
 
             <section className="relative z-10 px-6 md:px-12 max-w-7xl mx-auto flex flex-col items-center text-center">
                 <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 mt-10 text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]">
@@ -51,7 +41,7 @@ export default function ThemeParksPage() {
                     {/* Park 2 */}
                     <div className="bg-[#111] rounded-3xl overflow-hidden border border-white/10 group cursor-pointer hover:border-purple-500/50 transition-colors">
                         <div className="relative h-64 w-full">
-                            <Image src="https://images.unsplash.com/photo-1540954930113-11b0e9e4f509?q=80&w=1500&auto=format&fit=crop" fill className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-70 group-hover:opacity-100" alt="Disneyland Park" />
+                            <Image src="https://images.unsplash.com/photo-1620023476321-08f30d074127?q=80&w=1500&auto=format&fit=crop" fill className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-70 group-hover:opacity-100" alt="Disneyland Park" />
                             <div className="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent" />
                         </div>
                         <div className="p-8 relative -mt-10">
@@ -64,7 +54,7 @@ export default function ThemeParksPage() {
                     {/* Park 3 */}
                     <div className="bg-[#111] rounded-3xl overflow-hidden border border-white/10 group cursor-pointer hover:border-purple-500/50 transition-colors hidden md:block lg:block">
                         <div className="relative h-64 w-full">
-                            <Image src="https://images.unsplash.com/photo-1542259009477-d625272157b7?q=80&w=1500&auto=format&fit=crop" fill className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-70 group-hover:opacity-100" alt="Disneyland Paris" />
+                            <Image src="https://images.unsplash.com/photo-1533602187515-3850ea9c676d?q=80&w=1500&auto=format&fit=crop" fill className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-70 group-hover:opacity-100" alt="Disneyland Paris" />
                             <div className="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent" />
                         </div>
                         <div className="p-8 relative -mt-10">

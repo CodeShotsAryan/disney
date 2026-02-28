@@ -102,7 +102,7 @@ import FixedMickey from "./FixedMickey";
 
 const characters = [
     { name: "The Lion King", src: "/lionking.jpg", tag: "Classic", desc: "Journey to the Pride Lands. A story of legacy, courage, and the circle of life." },
-    { name: "Mickey Mouse", src: "/mickey.webp", tag: "Iconic", desc: "The mouse that started it all. Join the timeless adventures of Walt's greatest creation." },
+    { name: "Spider-Man", src: "/spider.png", tag: "Marvel", desc: "Your friendly neighborhood hero. With great power comes great responsibility." },
     { name: "Disney Universe", src: "/disneo.webp", tag: "Magic", desc: "Where imagination knows no bounds. Discover worlds beyond your wildest dreams." },
 ];
 
@@ -172,7 +172,7 @@ export default function MainLanding() {
 
             {/* ── SECTION 1: IMMERSIVE HERO PARALLAX ── */}
             <motion.section
-                className="relative w-full h-[100vh] flex flex-col items-center justify-start pt-[25vh] overflow-hidden"
+                className="relative w-full h-[100vh] flex flex-col items-center justify-start pt-[15vh] md:pt-[25vh] overflow-hidden"
                 style={{ opacity: opacityHero }}
             >
                 {/* Background Video — NO muted prop here, controlled via ref */}
@@ -255,8 +255,7 @@ export default function MainLanding() {
                             <motion.div animate={{ width: [10, 40, 10] }} transition={{ duration: 4, repeat: Infinity }} className="h-[2px] bg-primary/40" />
                         </div>
 
-                        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white tracking-tighter leading-[0.9] mb-8"
-                            style={{ textShadow: "0 0 80px rgba(147,197,253,0.2)" }}>
+                        <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-white tracking-tighter leading-[1] md:leading-[0.9] mb-8 drop-shadow-[0_0_80px_rgba(147,197,253,0.2)]">
                             The Magic of
                             <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#93c5fd] via-white to-[#3b82f6]">
@@ -472,7 +471,7 @@ export default function MainLanding() {
                     </div>
                     <div className="flex-1 relative min-h-[360px] rounded-3xl overflow-hidden border border-white/5 bg-white/[0.02]">
                         <div className="absolute inset-0">
-                            <Image src="/mickeymouse.jpg" alt="Disney Character" fill className="object-cover opacity-5" />
+                            <Image src="/spider.png" alt="Spider-Man" fill className="object-contain opacity-20" />
                             <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%)" }} />
                         </div>
                         <AnimatePresence mode="wait">

@@ -20,7 +20,7 @@ export default function Navbar() {
             >
                 {/* Desktop Nav Links (Left side only) */}
                 <div className="hidden lg:flex items-center gap-8 text-white/90 font-medium text-xs tracking-widest uppercase">
-                    <Link href="/" className="hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all">Disney+</Link>
+                    <Link href="/hotstar" className="hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all">Disney+</Link>
                     <Link href="/child" className="hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all">Parks & Cruises</Link>
                     <Link href="/marvel" className="hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all">Marvel</Link>
                     <Link href="/starwars" className="hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all">Star Wars</Link>
@@ -36,7 +36,7 @@ export default function Navbar() {
             {/* Mobile Menu Overlay */}
             {isOpen && (
                 <div className="fixed inset-0 z-[90] bg-black/95 backdrop-blur-3xl flex flex-col items-center justify-center gap-8 lg:hidden pt-20">
-                    <Link href="/" onClick={() => setIsOpen(false)} className="text-3xl font-bold text-white uppercase tracking-widest">Disney+</Link>
+                    <Link href="/hotstar" onClick={() => setIsOpen(false)} className="text-3xl font-bold text-white uppercase tracking-widest">Disney+</Link>
                     <Link href="/child" onClick={() => setIsOpen(false)} className="text-3xl font-bold text-white uppercase tracking-widest">Parks & Cruises</Link>
                     <Link href="/marvel" onClick={() => setIsOpen(false)} className="text-3xl font-bold text-white uppercase tracking-widest">Marvel</Link>
                     <Link href="/starwars" onClick={() => setIsOpen(false)} className="text-3xl font-bold text-white uppercase tracking-widest">Star Wars</Link>

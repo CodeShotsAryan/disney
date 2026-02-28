@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function FixedMickey() {
     return (
@@ -10,7 +11,7 @@ export default function FixedMickey() {
             animate={{ y: 0 }}
             transition={{ type: "spring", bounce: 0.5, duration: 2, delay: 1 }}
         >
-            <div className="relative flex flex-col items-center">
+            <Link href="/kids" className="relative flex flex-col items-center cursor-pointer group">
                 {/* Magical string holding Mickey */}
                 <div className="w-[2px] h-32 md:h-48 bg-gradient-to-b from-white/10 to-white/90" />
 
@@ -43,10 +44,10 @@ export default function FixedMickey() {
                         </g>
 
                         {/* Magical Sparkle on Ear */}
-                        <path d="M 20 8 L 22 17 L 31 19 L 22 21 L 20 30 L 18 21 L 9 19 L 18 17 Z" fill="#ffffff" opacity="0.9" />
+                        <path className="group-hover:fill-pink-400 transition-colors duration-500" d="M 20 8 L 22 17 L 31 19 L 22 21 L 20 30 L 18 21 L 9 19 L 18 17 Z" fill="#ffffff" opacity="0.9" />
                     </svg>
                 </motion.div>
-            </div>
+            </Link>
         </motion.div>
     );
 }
